@@ -1,0 +1,68 @@
+<!-- views/signin.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sign In</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+</head>
+<body>
+    <div class="container mt-5">
+        <h2 class="mb-4">Sign In</h2>
+
+        <form id="signInForm">
+            <div class="form-group">
+                <label for="username">Username/Account:</label>
+                <input type="text" class="form-control" id="username" required>
+            </div>
+
+            <div class="form-group">
+                <label for="password">Password:</label>
+                <input type="password" class="form-control" id="password" required>
+            </div>
+
+            <button type="submit" class="btn btn-primary">Sign In</button>
+        </form>
+
+        <!-- Bootstrap Alert for Success -->
+        <div id="successAlert" class="alert alert-success mt-3" style="display: none;">
+            Authentication successful! Redirecting to product list...
+        </div>
+
+        <!-- Bootstrap Alert for Failure -->
+        <div id="errorAlert" class="alert alert-danger mt-3" style="display: none;">
+            Authentication failed. Please check your credentials.
+        </div>
+
+        <!-- Add Bootstrap JS and Popper.js -->
+        <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+
+        <script>
+            document.getElementById('signInForm').addEventListener('submit', async function (event) {
+                event.preventDefault();
+
+                const username = document.getElementById('username').value;
+                const password = document.getElementById('password').value;
+
+                // Check if the entered credentials match the allowed values
+                if (username === 'Admin' && password === 'admin123') {
+                    console.log('Authentication successful');
+                    // Show success alert
+                    document.getElementById('successAlert').style.display = 'block';
+                    // Redirect to the product list page after 2 seconds
+                    setTimeout(() => {
+                        window.location.href = '/products.html';
+                    }, 2000);
+                } else {
+                    console.log('Authentication failed');
+                    // Show error alert
+                    document.getElementById('errorAlert').style.display = 'block';
+                }
+            });
+        </script>
+    </div>
+</body>
+</html>
