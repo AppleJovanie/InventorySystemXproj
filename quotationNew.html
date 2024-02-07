@@ -1,116 +1,458 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Quotations</title>
-    <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
-</head>
-<body>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Quotations</title>
+        <!-- Bootstrap CSS -->
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css" integrity="sha384-rZ5LsRO5L6K3Te6B5C5pQLZsqto2Kq3eQnJrDwGMEtOQqqwn3vo1zQJ8ddBqiViT" crossorigin="anonymous">
 
-<!-- Navigation Bar -->
-<nav class="navbar navbar-expand-lg navbar-light bg-light">
-    <a class="navbar-brand" href="#">Your Logo</a>
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-    </button>
-    <div class="collapse navbar-collapse" id="navbarNav">
-        <ul class="navbar-nav">
-            <li class="nav-item active">
-                <a class="nav-link" href="homepage.html">Home <span class="sr-only">(current)</span></a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="products.html?fromHomepage=true">Products Stocks</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="sales.html">Sales</a>
-            </li>
-        </ul>
-    </div>
-    
-    <!-- Sign Up Button -->
-    <div class="navbar-nav ml-auto">
-        <a class="nav-item nav-link" href="signIn.html">Sign In</a>
-    </div>
+    </head>
+    <body>
+        <style>
+            .deleteRow {
+                vertical-align: middle;
+                margin-left: 5px; /* Adjust the margin as needed */
+                margin-top: 5px;
+            }
+        </style>
+      
+    <!-- Navigation Bar -->
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <a class="navbar-brand" href="#">Your Logo</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav">
+                <li class="nav-item active">
+                    <a class="nav-link" href="homepage.html">Home <span class="sr-only">(current)</span></a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="products.html?fromHomepage=true">Products</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="sales.html">Sales</a>
+                </li>
+            </ul>
+        </div>
+     
+ 
+  <!-- Sign Up Button -->
+  <div class="navbar-nav ml-auto">
+    <a class="nav-item nav-link" href="signIn.html">Sign In</a>
+</div>
 </nav>
 
-<div class="container mt-5">
-    <h2 class="mb-4">Quotation Form</h2>
+    <div class="container mt-5">
+        <h2 class="mb-4" style="color: #dc3545;">Quotation Form</h2>
 
-    <form id="quotationForm">
-        <div class="row">
-            <div class="col-md-6">
-                <div class="form-group">
-                    <label for="customerName">Customer Name:</label>
-                    <input type="text" class="form-control" id="customerName" name="customerName" required>
+        <form id="quotationForm">
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label for="customerName">Customer Name:</label>
+                        <input type="text" class="form-control" id="customerName" name="customerName" required>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label for="invoiceAddress">Invoice Address:</label>
+                        <textarea class="form-control" id="invoiceAddress" name="invoiceAddress" rows="4"
+                            required></textarea>
+                    </div>
                 </div>
             </div>
-            <div class="col-md-6">
-                <div class="form-group">
-                    <label for="invoiceAddress">Invoice Address:</label>
-                    <textarea class="form-control" id="invoiceAddress" name="invoiceAddress" rows="4" required></textarea>
+
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label for="deliveryAddress">Delivery Address:</label>
+                        <textarea class="form-control" id="deliveryAddress" name="deliveryAddress" rows="4"
+                            required></textarea>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label for="expirationDate">Expiration Date:</label>
+                        <input type="date" class="form-control" id="expirationDate" name="expirationDate" required>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label for="quotationDate">Quotation Date:</label>
+                        <input type="date" class="form-control" id="quotationDate" name="quotationDate" required>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label for="priceList">Price List:</label>
+                        <select class="form-control" id="priceList" name="priceList" required>
+                            <option value="standard">PHP</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+
+
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label for="paymentTerms">Payment Terms:</label>
+                        <input type="text" class="form-control" id="paymentTerms" name="paymentTerms" required>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label for="salesPerson">Sales Person:</label>
+                        <input type="text" class="form-control" id="salesPerson" name="salesPerson" required>
+                    </div>
+                </div>
+            </div>
+            <hr class="my-4">
+                        
+            <!-- Tabs Navigation -->
+            <ul class="nav nav-tabs" id="quotationTabs">
+                <li class="nav-item">
+                    <a class="nav-link active" id="otherInfoTab" data-toggle="tab" href="#otherInfo" style="color: #dc3545;">Other Info</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" id="orderLinesTab" data-toggle="tab" href="#orderLines" style="color: #dc3545;">Order Lines</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" id="optionalProductsTab" data-toggle="tab" href="#optionalProducts" style="color: #dc3545;">Optional Products</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" id="optionalProductsTab" data-toggle="tab" href="#costumersignature" style="color: #dc3545;">Customer Signature</a>
+                </li>
+            </ul>
+
+
+            <!-- Tabs Content -->
+            <div class="tab-content mt-3">
+                <!-- Other Info Tab -->
+                <div class="tab-pane fade show active" id="otherInfo">
+                    <form id="otherInfoForm">
+                        <div class="row">
+                            <div class="col-md-6">
+                                <!-- Sales Module Start -->
+
+                                <h5>Sales</h5>
+                                <div class="form-group">
+                                    <label for="salesPerson">Sales Person:</label>
+                                    <input type="text" class="form-control" id="salesPerson" name="salesPerson">
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label for="salesTeam">Sales Team:</label>
+                                    <input type="text" class="form-control" id="salesTeam" name="salesTeam">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label for="company">Company:</label>
+                                    <input type="text" class="form-control" id="company" name="company">
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label for="onlineConfirmation">Online Confirmation:</label>
+                                    <div class="form-check">
+                                        <input type="checkbox" class="form-check-input" id="signatureCheckbox"
+                                            name="signatureCheckbox">
+                                        <label class="form-check-label" for="signatureCheckbox">Signature</label>
+                                    </div>
+                                    <div class="form-check">
+                                        <input type="checkbox" class="form-check-input" id="paymentCheckbox"
+                                            name="paymentCheckbox">
+                                        <label class="form-check-label" for="paymentCheckbox">Payment</label>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label for="customerReference">Customer Reference:</label>
+                                    <input type="text" class="form-control" id="customerReference"
+                                        name="customerReference">
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label for="tags">Tags:</label>
+                                    <input type="text" class="form-control" id="tags" name="tags">
+                                </div>
+                            </div>
+                        </div>
+                        <hr class="my-4">
+                        <!-- Sales Module End -->
+
+                        <!-- Invoicing and Payments Module Start -->
+                        <div class="form-group">
+                            <h5>Invoicing and Payments</h5>
+                            <label for="fiscalPosition">Fiscal Position:</label>
+                            <select class="form-control" id="fiscalPosition" name="fiscalPosition" required>
+                                <option value="vatRegistered">Vat Registered</option>
+                                <option value="vatExempt">Vat Exempt</option>
+                                <option value="nonVat">Non Vat</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="analyticAmount">Analytic Amount:</label>
+                            <input type="text" class="form-control" id="analyticAmount" name="analyticAmount">
+                        </div>
+                        <hr class="my-4">
+                        <!-- Invoicing and Payments Module End -->
+
+                        <!-- Delivery Module Start -->
+                        <div class="form-group">
+                            <h5>Delivery</h5>
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <label for="warehouse">Warehouse:</label>
+                                    <select class="form-control" id="warehouse" name="warehouse" required>
+                                        <option value="standard">XPROJECT DEVELOPMENT SERVICES</option>
+                                    </select>
+                                </div>
+                                <div class="col-md-6">
+                                    <label for="incoterm">Incoterm:</label>
+                                    <input type="text" class="form-control" id="incoterm" name="incoterm">
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <label for="incotermLocation">Incoterm Location:</label>
+                                    <input type="text" class="form-control" id="incotermLocation"
+                                        name="incotermLocation">
+                                </div>
+                                <div class="col-md-6">
+                                    <label for="shippingPolicy">Shipping Policy:</label>
+                                    <select class="form-control" id="shippingPolicy" name="shippingPolicy" required>
+                                        <option value="asap">As Soon As Possible</option>
+                                        <option value="whenReady">When All Products Are Ready</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <label for="deliveryDate">Delivery Date:</label>
+                                    <input type="date" class="form-control" id="deliveryDate" name="deliveryDate">
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Delivery Module End -->
+
+                        <!-- Tracking Module -->
+                        <div class="form-group">
+                            <h5>Tracking</h5>
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label for="sourceDocument">Source Document:</label>
+                                        <input type="text" class="form-control" id="sourceDocument"
+                                            name="sourceDocument">
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label for="opportunity">Opportunity:</label>
+                                        <input type="text" class="form-control" id="opportunity" name="opportunity">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label for="campaign">Campaign:</label>
+                                        <input type="text" class="form-control" id="campaign" name="campaign">
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label for="medium">Medium:</label>
+                                        <input type="text" class="form-control" id="medium" name="medium">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label for="source">Source:</label>
+                                        <input type="text" class="form-control" id="source" name="source">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- End of Tracking Module -->
+
+                
+
+
+                        <!-- Customer Signature Tab -->
+                        <div class="tab-pane fade" id="costumersignature">
+                            <form id="customersignatureForm">
+                                <!-- Customer Signature form fields go here -->
+                            </form>
+                        </div>
+                    </form>
+                </div>
+
+         
+          <!-- Order Lines Tab -->
+<div class="tab-pane fade" id="orderLines">
+    <form id="orderLinesForm">
+        <h5>Order Lines</h5>
+     
+        <div id="orderLinesContainer">
+            <div class="form-row order-line-row">
+                <div class="form-group col-md-3">
+                    <label for="product">Product:</label>
+                    <input type="text" class="form-control product" name="product">
+                </div>
+
+                <div class="form-group col-md-3">
+                    <label for="description">Description:</label>
+                    <input type="text" class="form-control description" name="description">
+                </div>
+
+                <div class="form-group col-md-1">
+                    <label for="quantity">Quantity:</label>
+                    <input type="number" class="form-control quantity" name="quantity">
+                </div>
+
+                <div class="form-group col-md-2">
+                    <label for="packaging">Packaging:</label>
+                    <input type="text" class="form-control packaging" name="packaging">
+                </div>
+
+                <div class="form-group col-md-1">
+                    <label for="unitPrice">Unit Price:</label>
+                    <input type="number" class="form-control unitPrice" name="unitPrice">
+                </div>
+                
+                <div class="form-group col-md-1">
+                    <label for="discountPercentage">Disc.%:</label>
+                    <input type="number" class="form-control discountPercentage" name="discountPercentage">
+                </div>
+
+                <div class="form-group col-md-1">
+                    <label for="total">Total:</label>
+                    <input type="number" class="form-control total" name="total" readonly style="width: 150px;">
+                   
                 </div>
             </div>
         </div>
-
-        <div class="row">
-            <div class="col-md-6">
-                <div class="form-group">
-                    <label for="deliveryAddress">Delivery Address:</label>
-                    <textarea class="form-control" id="deliveryAddress" name="deliveryAddress" rows="4" required></textarea>
-                </div>
-            </div>
-            <div class="col-md-6">
-                <div class="form-group">
-                    <label for="expirationDate">Expiration Date:</label>
-                    <input type="date" class="form-control" id="expirationDate" name="expirationDate" required>
-                </div>
+        
+        <div class="form-row">
+            <div class="form-group col-md-3">
+                <button type="button" class="btn btn-success" id="addProductRow">Add Product</button>
             </div>
         </div>
-
-        <div class="row">
-            <div class="col-md-6">
-                <div class="form-group">
-                    <label for="quotationDate">Quotation Date:</label>
-                    <input type="date" class="form-control" id="quotationDate" name="quotationDate" required>
-                </div>
-            </div>
-            <div class="col-md-6">
-                <div class="form-group">
-                    <label for="priceList">Price List:</label>
-                    <select class="form-control" id="priceList" name="priceList" required>
-                        <option value="standard">Standard</option>
-                        <option value="premium">Premium</option>
-                        <!-- Add more options as needed -->
-                    </select>
-                </div>
-            </div>
-        </div>
-
-        <div class="row">
-            <div class="col-md-6">
-                <div class="form-group">
-                    <label for="paymentTerms">Payment Terms:</label>
-                    <input type="text" class="form-control" id="paymentTerms" name="paymentTerms" required>
-                </div>
-            </div>
-            <div class="col-md-6">
-                <div class="form-group">
-                    <label for="salesPerson">Sales Person:</label>
-                    <input type="text" class="form-control" id="salesPerson" name="salesPerson" required>
-                </div>
-            </div>
-        </div>
-
-        <button type="submit" class="btn btn-primary">Submit</button>
     </form>
 </div>
 
-<!-- Bootstrap JS and Popper.js (required for some Bootstrap components) -->
-<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.1/dist/umd/popper.min.js"></script>
-<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+                <!-- Optional Products Tab -->
+                <div class="tab-pane fade" id="optionalProducts">
+                    <form id="optionalProductsForm">
+                        <!-- Optional Products form fields go here -->
+                    </form>
+                </div>
 
+                <!-- Customer Signature Tab -->
+                <div class="tab-pane fade" id="costumersignature">
+                    <form id="customersignatureForm">
+                        <!-- Customer Signature form fields go here -->
+                    </form>
+                </div>
+
+                <button type="submit" class="btn btn-primary">Submit</button>
+            </div>
+        </form>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.1/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            const orderLinesForm = document.getElementById('orderLinesForm');
+            const orderLinesContainer = orderLinesForm.querySelector('.form-row'); // Select the form-row inside orderLinesForm
+            const addProductButton = document.getElementById('addProductRow');
+    
+            function addNewProductRow() {
+                const orderLinesContainer = document.getElementById('orderLinesContainer');
+    
+                // Check if orderLinesContainer has any child elements
+                if (orderLinesContainer.firstElementChild) {
+                    const newRow = orderLinesContainer.firstElementChild.cloneNode(true);
+    
+                    // Clear values and remove 'readonly' for all inputs in the cloned row
+                     // Clear values and remove 'readonly' for all inputs in the cloned row
+            newRow.querySelectorAll('input[type="text"], input[type="number"]').forEach(input => {
+                input.value = '';
+                input.removeAttribute('readonly');
+            });
+    
+                    // Check if '.total' exists in the cloned row before updating its value
+                    const totalField = newRow.querySelector('.total');
+                    if (totalField) {
+                        // Set an initial value or leave it empty for the total field in the new row
+                        totalField.value = '';
+                        // Ensure that 'readonly' is removed from the total field in the new row
+                        totalField.removeAttribute('readonly');
+                    }
+    
+                    const deleteButton = document.createElement('button');
+                    deleteButton.type = 'button';
+                    deleteButton.classList.add('btn', 'btn-danger', 'deleteRow');
+                    deleteButton.textContent = 'Delete';
+                    deleteButton.addEventListener('click', function () {
+                        orderLinesContainer.removeChild(newRow);
+                    });
+    
+                    // Append the delete button to the new row
+                    newRow.appendChild(deleteButton);
+    
+                    orderLinesContainer.appendChild(newRow);
+    
+                    // Attach the input event listener to the newly added row for live total calculation
+                    newRow.addEventListener('input', function (event) {
+                        if (event.target.type === 'number') {
+                            calculateTotal(newRow);
+                        }
+                    });
+                }
+            }
+    
+            addProductButton.addEventListener('click', addNewProductRow);
+    
+            orderLinesContainer.addEventListener('input', function (event) {
+                if (event.target.type === 'number') {
+                    calculateTotal(event.target.closest('.form-row'));
+                }
+            });
+    
+            function calculateTotal(row) {
+                var quantity = parseFloat(row.querySelector('.quantity').value) || 0;
+                var unitPrice = parseFloat(row.querySelector('.unitPrice').value) || 0;
+                var discountPercentage = parseFloat(row.querySelector('.discountPercentage').value) || 0;
+    
+                var totalWithoutDiscount = quantity * unitPrice;
+                var discountAmount = (discountPercentage / 100) * totalWithoutDiscount;
+                var totalWithDiscount = totalWithoutDiscount - discountAmount;
+    
+                row.querySelector('.total').value = totalWithDiscount.toFixed(2);
+            }
+        });
+    </script>
 </body>
 </html>
+
