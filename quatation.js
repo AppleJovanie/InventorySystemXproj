@@ -142,5 +142,4 @@ const formattedTotalAmount = 'PHP ' + totalAmount.toFixed(2).replace(/\d(?=(\d{3
 // Display the formatted total amount below the order lines
 document.getElementById('totalAmount').textContent = formattedTotalAmount;
 }
-
 });
