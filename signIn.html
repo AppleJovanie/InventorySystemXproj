@@ -53,9 +53,11 @@
                     // Show success alert
                     document.getElementById('successAlert').style.display = 'block';
                     // Redirect to the product list page after 2 seconds
+                
                     setTimeout(() => {
                         window.location.href = '/products.html';
                     }, 2000);
+
                 } else {
                     console.log('Authentication failed');
                     // Show error alert

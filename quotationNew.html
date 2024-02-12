@@ -16,6 +16,11 @@
                 margin-left: 5px; /* Adjust the margin as needed */
                 margin-top: 5px;
             }
+
+            #persistentTextArea {
+            resize: vertical; /* Allow vertical resizing only */
+            min-height: 500px; /* Set a minimum height */
+}
         </style>
       
     <!-- Navigation Bar -->
@@ -45,25 +50,25 @@
 </div>
 </nav>
 
-    <div class="container mt-5">
-        <h2 class="mb-4" style="color: #dc3545;">Quotation Form</h2>
+<div class="container mt-5">
+    <div class="row">
+        <div class="col-md-6">
+            <h2 class="mb-4" style="color: #dc3545;">Quotation Form </h2>
+            <form id="quotationForm">
+                <div class="form-group">
+                    <label for="customerName">Customer Name:</label>
+                    <input type="text" class="form-control" id="customerName" name="customerName" required>
+                </div>
+                <div class="form-group">
+                    <label for="invoiceAddress">Invoice Address:</label>
+                    <textarea class="form-control" id="invoiceAddress" name="invoiceAddress" rows="4" required></textarea>
+                </div>
+            </form>
+        </div>
+       
+    </div>
 
-        <form id="quotationForm">
-            <div class="row">
-                <div class="col-md-6">
-                    <div class="form-group">
-                        <label for="customerName">Customer Name:</label>
-                        <input type="text" class="form-control" id="customerName" name="customerName" required>
-                    </div>
-                </div>
-                <div class="col-md-6">
-                    <div class="form-group">
-                        <label for="invoiceAddress">Invoice Address:</label>
-                        <textarea class="form-control" id="invoiceAddress" name="invoiceAddress" rows="4"
-                            required></textarea>
-                    </div>
-                </div>
-            </div>
+
 
             <div class="row">
                 <div class="col-md-6">
@@ -90,9 +95,10 @@
                 </div>
                 <div class="col-md-6">
                     <div class="form-group">
-                        <label for="priceList">Price List:</label>
+                        <label for="priceList">Currency:</label>
                         <select class="form-control" id="priceList" name="priceList" required>
                             <option value="standard">PHP</option>
+                            <option value="standard">USD</option>
                         </select>
                     </div>
                 </div>
@@ -124,10 +130,16 @@
                     <a class="nav-link" id="orderLinesTab" data-toggle="tab" href="#orderLines" style="color: #dc3545;">Order Lines</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" id="optionalProductsTab" data-toggle="tab" href="#optionalProducts" style="color: #dc3545;">Optional Products</a>
+                    <!--
+                          <a class="nav-link" id="optionalProductsTab" data-toggle="tab" href="#optionalProducts" style="color: #dc3545;">Optional Products</a>    
+                    -->
+                  
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" id="optionalProductsTab" data-toggle="tab" href="#costumersignature" style="color: #dc3545;">Customer Signature</a>
+                    <!--
+                       <a class="nav-link" id="optionalProductsTab" data-toggle="tab" href="#costumersignature" style="color: #dc3545;">Customer Signature</a> 
+                    -->
+                    
                 </li>
             </ul>
 
@@ -140,12 +152,7 @@
                         <div class="row">
                             <div class="col-md-6">
                                 <!-- Sales Module Start -->
-
-                                <h5>Sales</h5>
-                                <div class="form-group">
-                                    <label for="salesPerson">Sales Person:</label>
-                                    <input type="text" class="form-control" id="salesPerson" name="salesPerson">
-                                </div>
+                                <h5>Sales</h5>     
                             </div>
                             <div class="col-md-6">
                                 <div class="form-group">
@@ -158,8 +165,11 @@
                             <div class="col-md-6">
                                 <div class="form-group">
                                     <label for="company">Company:</label>
-                                    <input type="text" class="form-control" id="company" name="company">
+                                    <select class="form-control" id="company" name="company">
+                                        <option value="XPROJECT">XPROJECT HOTEL SUPPLY DEPOT</option>
+                                    </select>
                                 </div>
+                                
                             </div>
                             <div class="col-md-6">
                                 <div class="form-group">
@@ -198,15 +208,14 @@
                         <!-- Invoicing and Payments Module Start -->
                         <div class="form-group">
                             <h5>Invoicing and Payments</h5>
-                            <label for="fiscalPosition">Fiscal Position:</label>
-                            <select class="form-control" id="fiscalPosition" name="fiscalPosition" required>
-                                <option value="vatRegistered">Vat Registered</option>
-                                <option value="vatExempt">Vat Exempt</option>
-                                <option value="nonVat">Non Vat</option>
+                            <label for="vatOption">VAT Option:</label>
+                            <select class="form-control vatOption" name="vatOption">
+                                <option value="vat">VAT</option>
+                                <option value="nonVat">Non-VAT</option>
                             </select>
                         </div>
                         <div class="form-group">
-                            <label for="analyticAmount">Analytic Amount:</label>
+                            <label for="analyticAmount">Analytic Account:</label>
                             <input type="text" class="form-control" id="analyticAmount" name="analyticAmount">
                         </div>
                         <hr class="my-4">
@@ -306,11 +315,11 @@
                 </div>
 
          
-          <!-- Order Lines Tab -->
+ <!-- Order Lines Tab -->
 <div class="tab-pane fade" id="orderLines">
     <form id="orderLinesForm">
         <h5>Order Lines</h5>
-     
+        <br>
         <div id="orderLinesContainer">
             <div class="form-row order-line-row">
                 <div class="form-group col-md-3">
@@ -346,17 +355,26 @@
                 <div class="form-group col-md-1">
                     <label for="total">Total:</label>
                     <input type="number" class="form-control total" name="total" readonly style="width: 150px;">
-                   
                 </div>
             </div>
         </div>
+               
+        <br>
+        <div>Total Amount: <span id="totalAmount">0.00</span></div>
         
+        <br>
         <div class="form-row">
             <div class="form-group col-md-3">
                 <button type="button" class="btn btn-success" id="addProductRow">Add Product</button>
-            </div>
-        </div>
+        </div>    
     </form>
+</div>
+<div class="mt-4">
+    <label for="persistentTextArea">Additional Comments:</label>
+    <textarea class="form-control" id="persistentTextArea" rows="5" placeholder="Enter additional comments here"></textarea>
+</div>
+<div class="col-md-6">
+    <button type="submit" class="btn btn-primary mt-4">Confirm</button>
 </div>
 
                 <!-- Optional Products Tab -->
@@ -372,87 +390,17 @@
                         <!-- Customer Signature form fields go here -->
                     </form>
                 </div>
-
-                <button type="submit" class="btn btn-primary">Submit</button>
-            </div>
+                <br>
+                  <!-- <button type="submit" class="btn btn-primary">Submit</button>-->  
+               
+            </div>   
         </form>
     </div>
 
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.1/dist/umd/popper.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
-    <script>
-        document.addEventListener('DOMContentLoaded', function () {
-            const orderLinesForm = document.getElementById('orderLinesForm');
-            const orderLinesContainer = orderLinesForm.querySelector('.form-row'); // Select the form-row inside orderLinesForm
-            const addProductButton = document.getElementById('addProductRow');
-    
-            function addNewProductRow() {
-                const orderLinesContainer = document.getElementById('orderLinesContainer');
-    
-                // Check if orderLinesContainer has any child elements
-                if (orderLinesContainer.firstElementChild) {
-                    const newRow = orderLinesContainer.firstElementChild.cloneNode(true);
-    
-                    // Clear values and remove 'readonly' for all inputs in the cloned row
-                     // Clear values and remove 'readonly' for all inputs in the cloned row
-            newRow.querySelectorAll('input[type="text"], input[type="number"]').forEach(input => {
-                input.value = '';
-                input.removeAttribute('readonly');
-            });
-    
-                    // Check if '.total' exists in the cloned row before updating its value
-                    const totalField = newRow.querySelector('.total');
-                    if (totalField) {
-                        // Set an initial value or leave it empty for the total field in the new row
-                        totalField.value = '';
-                        // Ensure that 'readonly' is removed from the total field in the new row
-                        totalField.removeAttribute('readonly');
-                    }
-    
-                    const deleteButton = document.createElement('button');
-                    deleteButton.type = 'button';
-                    deleteButton.classList.add('btn', 'btn-danger', 'deleteRow');
-                    deleteButton.textContent = 'Delete';
-                    deleteButton.addEventListener('click', function () {
-                        orderLinesContainer.removeChild(newRow);
-                    });
-    
-                    // Append the delete button to the new row
-                    newRow.appendChild(deleteButton);
-    
-                    orderLinesContainer.appendChild(newRow);
-    
-                    // Attach the input event listener to the newly added row for live total calculation
-                    newRow.addEventListener('input', function (event) {
-                        if (event.target.type === 'number') {
-                            calculateTotal(newRow);
-                        }
-                    });
-                }
-            }
-    
-            addProductButton.addEventListener('click', addNewProductRow);
-    
-            orderLinesContainer.addEventListener('input', function (event) {
-                if (event.target.type === 'number') {
-                    calculateTotal(event.target.closest('.form-row'));
-                }
-            });
-    
-            function calculateTotal(row) {
-                var quantity = parseFloat(row.querySelector('.quantity').value) || 0;
-                var unitPrice = parseFloat(row.querySelector('.unitPrice').value) || 0;
-                var discountPercentage = parseFloat(row.querySelector('.discountPercentage').value) || 0;
-    
-                var totalWithoutDiscount = quantity * unitPrice;
-                var discountAmount = (discountPercentage / 100) * totalWithoutDiscount;
-                var totalWithDiscount = totalWithoutDiscount - discountAmount;
-    
-                row.querySelector('.total').value = totalWithDiscount.toFixed(2);
-            }
-        });
-    </script>
+    <script src="quatation.js"></script>
 </body>
 </html>
 
