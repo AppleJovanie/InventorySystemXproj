@@ -10,6 +10,7 @@ const port = 3000;
 app.use(bodyParser.json());
 app.use(cors());
 
+
 const config = {
     user: 'jovanie',
     password: 'admin123',
@@ -21,6 +22,7 @@ const config = {
         trustServerCertificate: true,
     },
 };
+
 
 
 const pool = new sql.ConnectionPool(config);
@@ -152,4 +154,30 @@ process.on('SIGINT', () => {
     console.log('Closing database connection on server shutdown');
     pool.close();   
     process.exit();
+});
+
+
+app.post('/insertQuotation', async (req, res) => {
+    const { CustomerName, InvoiceAddress, DeliveryAddress, ExpirationDate, QuotationDate, PriceList, PaymentTerms, SalesPerson } = req.body;
+    const pool = req.pool;
+
+    try {
+        const result = await pool
+            .request()
+            .input('CustomerName', sql.NVarChar(255), CustomerName)
+            .input('InvoiceAddress', sql.NVarChar(sql.MAX), InvoiceAddress)
+            .input('DeliveryAddress', sql.NVarChar(sql.MAX), DeliveryAddress)
+            .input('ExpirationDate', sql.DATE, ExpirationDate)
+            .input('QuotationDate', sql.DATE, QuotationDate)
+            .input('PriceList', sql.NVarChar(50), PriceList)
+            .input('PaymentTerms', sql.NVarChar(100), PaymentTerms)
+            .input('SalesPerson', sql.NVarChar(100), SalesPerson)
+            .execute('InsertQuotation');
+
+        console.log('Quotation inserted successfully');
+        res.json({ success: true, message: 'Quotation inserted successfully!' });
+    } catch (error) {
+        console.error(error);
+        res.status(500).json({ success: false, message: 'Error inserting quotation.' });
+    }
 });
